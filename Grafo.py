@@ -91,6 +91,7 @@ class Grafo:
     ####################################################################
 
     def Breadth_first_search(self, identificador):#Largura
+        flag = 0
         fonte = self.busca_Vertice(identificador)
         if fonte is None:
             return "Vertce Nulo"
@@ -98,6 +99,9 @@ class Grafo:
         lista = [fonte]
         while 0 != len(lista):
             u = lista[0]
+            if flag == 1:
+                print('Visitando Vertice: '+u.getId())
+            flag = 1
             v = self.busca_Adjacente(u)  # retorna adjacente não visitado
             if v is None:
                 lista.pop(0)  # retiro o vertice sem adjacentes

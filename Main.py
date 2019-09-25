@@ -3,7 +3,7 @@ print("-----------------------------------------------------Construcao de Grafos
 print('1 - Criar grafo')
 print('2 - Printar grafo')
 print('3 - Busca em profundidade')
-print('4 Busca em largura')
+print('4 - Busca em largura')
 print('0 - Exit')
 op = int(input('Digite a opcao: '))
 
@@ -11,7 +11,7 @@ grafo = Grafo(False)
 
 while op != 0:
     if op == 1:
-        print("Digite a quantidade de vertices: ")
+        print('Digite a quantidade de vertices ')
         vertices = int(input())
         for i in range(vertices):
             print('Digite o identificador dos vertices: ')
@@ -32,6 +32,8 @@ while op != 0:
                 if grafo.lista_Vertices[k].getId() == grafo.lista_Arestas[i].getOrigem().getId():
                     print('    '+grafo.lista_Arestas[i].getDestino().getId()+' com peso: '+str(grafo.lista_Arestas[i].getPeso()))
     elif op == 3:
-        pass
-
+        grafo.Depth_first_search()
+    elif op == 4:
+        id = input('Digite o identificador do vertice: ')
+        grafo.Breadth_first_search(id)
     op = int(input('Digite a opcao: '))
