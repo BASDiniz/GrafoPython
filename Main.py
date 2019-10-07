@@ -41,4 +41,11 @@ while op != 0:
     elif op == 5:
         id = input('Digite o identificador do vertice: ')
         grafo.Breadth_first_search(id)
+    print("-----------------------------------------------------Construcao de Grafos----------------------------------------------------")
+    print('1 - Criar grafo')
+    print('2 - Printar grafo')
+    print('3 - Printar Grafo (Destino, Origem) (Necessita realizar busca em profundidade antes)')
+    print('4 - Busca em profundidade')
+    print('5 - Busca em largura')
+    print('0 - Exit')
     op = int(input('Digite a opcao: '))

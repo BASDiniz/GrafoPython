@@ -94,7 +94,7 @@ class Grafo:
         flag = 0
         fonte = self.busca_Vertice(identificador)
         if fonte is None:
-            return "Vertce Nulo"
+            return "Vertice Nulo"
         self.inicializa_Fonte(fonte)
         lista = [fonte]
         while 0 != len(lista):
