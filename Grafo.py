@@ -18,7 +18,7 @@ class Grafo:
             if origem.getId() == u.getId() and destino.getId() == v.getId():
                 return w
 
-    def busca_Vertice(self, identificador):  # Método recebe um int
+    def busca_Vertice(self, identificador):  # Método recebe um identificador
         for i in self.lista_Vertices:
             if identificador == i.getId():
                 return i
@@ -219,65 +219,5 @@ class Grafo:
         else:
             print("Grafo Acíclico")
 
+    
     ####################################################################
-    def grafo_Transposto(self):  # w(u,v) passa a ser w(v,u)
-        for i in range(len(self.lista_Arestas)):
-            origem = self.lista_Arestas[0].getOrigem()
-            destino = self.lista_Arestas[0].getDestino()
-            self.lista_Arestas.pop(0)
-            self.lista_Arestas.append(Aresta(destino, origem, 0))
-
-    def Strong_component_algorithm(self):
-        print("Busca em Profundidade")
-        self.Depth_first_search()
-        self.lista_Vertices.sort(key=lambda u: u.output, reverse=True)  # ordena a lista em ralação a vertice.output
-        for w in self.lista_Arestas:
-            print(w)
-        self.grafo_Transposto()
-        print("Grafo Transposto:")
-        for w in self.lista_Arestas:
-            print(w)
-        for i in self.lista_Vertices:
-            i.input = 0
-            i.output = 0
-            i.setVisitado(False)
-        print("\nComponetes fortemente Conexos\n")
-        for i in self.lista_Vertices:
-            if not i.getVisitado():
-                self.visita(i)
-
-    ####################################################################
-    def cria_Euleriano(self):
-        pass
-
-    def eh_euleriano(self):
-        for u in self.lista_Vertices:
-            if self.grau(u) % 2 is not 0:
-                return False
-        return True
-
-    def grau(self, u):
-        grau = 0
-        for w in self.lista_Arestas:
-            if u == w.getOrigem():
-                grau += 1
-        return grau
-
-    ####################################################################
-    def eh_Ponto(self, u):
-        for v in self.lista_Vertices:
-            v.setVisitado(False)
-
-        u.setVisitado(True)
-        self.visita(self.busca_Adjacente(u))
-        for v in self.lista_Vertices:
-            if v.getVisitado() == False:
-                return True
-
-    def Articulation(self):
-        art = []
-        for u in self.lista_Vertices:
-            if self.eh_Ponto(u):
-                art.append(u.getId())
-        print("Pontos de Articulação", art)
-        ####################################################################

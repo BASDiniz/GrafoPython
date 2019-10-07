@@ -2,8 +2,9 @@ from Grafo import *
 print("-----------------------------------------------------Construcao de Grafos----------------------------------------------------")
 print('1 - Criar grafo')
 print('2 - Printar grafo')
-print('3 - Busca em profundidade')
-print('4 - Busca em largura')
+print('3 - Printar Grafo (Destino, Origem)')
+print('4 - Busca em profundidade')
+print('5 - Busca em largura')
 print('0 - Exit')
 op = int(input('Digite a opcao: '))
 
@@ -32,8 +33,12 @@ while op != 0:
                 if grafo.lista_Vertices[k].getId() == grafo.lista_Arestas[i].getOrigem().getId():
                     print('    '+grafo.lista_Arestas[i].getDestino().getId()+' com peso: '+str(grafo.lista_Arestas[i].getPeso()))
     elif op == 3:
-        grafo.Depth_first_search()
+        origem = input('Digite o id da origem: ')
+        destino = input('Digite o id do destino: ')
+        grafo.imprime_Grafo_com_Destino(origem,destino)
     elif op == 4:
+        grafo.Depth_first_search()
+    elif op == 5:
         id = input('Digite o identificador do vertice: ')
         grafo.Breadth_first_search(id)
     op = int(input('Digite a opcao: '))
